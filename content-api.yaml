@@ -1,0 +1,13 @@
+name: Content API
+version: 1.0.0
+description: "Content API plugin provides a basic way for Applications to get content data from Flextype in valid json format."
+author:
+  name: Sergey Romanenko
+  email: awilum@yandex.ru
+  url: http://flextype.org
+homepage: https://github.com/flextype-plugins/content-api
+bugs: https://github.com/flextype-plugins/content-api/issues
+license: MIT
+
+# Plugin settings
+enabled: true

@@ -1,0 +1,2 @@
+content_api: "Content API"
+content_api_description: "Content API plugin provides a basic way for Applications to get content data from Flextype in valid json format."
