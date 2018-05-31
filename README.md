@@ -1,7 +1,7 @@
 # Content API Plugin for [Flextype](http://flextype.org/)
-![version](https://img.shields.io/badge/version-1.0.0-brightgreen.svg?style=flat-square "Version")
-![Flextype](https://img.shields.io/badge/Flextype-0.x-green.svg?style=flat-square "Flextype Version")
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/flextype-plugins/content-api/blob/master/LICENSE.txt)
+![version](https://img.shields.io/badge/version-1.0.1-brightgreen.svg?style=flat-square)
+![Flextype](https://img.shields.io/badge/Flextype-0.x-green.svg?style=flat-square)
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 
 Content API plugin provides a basic way for Applications to get content data from Flextype in valid json format.
 
@@ -21,7 +21,7 @@ plugins:
 
 Get current page in json format
 ```
-?to_json
+?to-json
 ```
 
 Get current raw page in json format
