@@ -21,7 +21,7 @@ Event::addListener('onCurrentPageBeforeDisplayed', function () {
     {
         Http::setResponseStatus(200);
         Http::setRequestHeaders('Content-Type: application/json; charset='.Registry::get('site.charset'));
-        echo Arr::toJson($data);
+        echo Arr::toJson($data, JSON_UNESCAPED_UNICODE);
         Http::requestShutdown();
     }
 
