@@ -20,7 +20,7 @@ Event::addListener('onCurrentPageBeforeDisplayed', function () {
     function _returnDataInJsonFormat($data)
     {
         Http::setResponseStatus(200);
-        Http::setRequestHeaders('Content-Type: application/json; charset='.Registry::get('site.charset'));
+        Http::setRequestHeaders('Content-Type: application/json; charset='.Registry::get('system.charset'));
         echo Arr::toJson($data, JSON_UNESCAPED_UNICODE);
         Http::requestShutdown();
     }
@@ -28,7 +28,6 @@ Event::addListener('onCurrentPageBeforeDisplayed', function () {
     $_to_json   = Http::get('to-json');
     $_get_page  = Http::get('get-page');
     $_get_pages = Http::get('get-pages');
-    $_get_block = Http::get('get-block');
 
     if (isset($_to_json)) {
         $raw = Http::get('raw');
@@ -54,10 +53,4 @@ Event::addListener('onCurrentPageBeforeDisplayed', function () {
                                                   (($offset != '') ? $offset : null),
                                                   (($length != '') ? $length : null))]);
     }
-
-    if (isset($_get_block)) {
-        $raw = Http::get('raw');
-        _returnDataInJsonFormat([Content::getBlock($_get_block)], (($raw == 'true') ? true : false));
-    }
-
 });
