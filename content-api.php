@@ -13,14 +13,16 @@
 
 namespace Flextype;
 
-use Flextype\Component\{Event\Event, Http\Http, Registry\Registry, Arr\Arr};
+use Flextype\Component\Event\Event;
+use Flextype\Component\Http\Http;
+use Flextype\Component\Registry\Registry;
+use Flextype\Component\Arr\Arr;
 
 Event::addListener('onCurrentPageBeforeDisplayed', function () {
-
     function _returnDataInJsonFormat($data)
     {
         Http::setResponseStatus(200);
-        Http::setRequestHeaders('Content-Type: application/json; charset='.Registry::get('system.charset'));
+        Http::setRequestHeaders('Content-Type: application/json; charset='.Registry::get('settings.charset'));
         echo Arr::toJson($data, JSON_UNESCAPED_UNICODE);
         Http::requestShutdown();
     }
@@ -46,11 +48,13 @@ Event::addListener('onCurrentPageBeforeDisplayed', function () {
         $offset     = Http::get('offset');
         $length     = Http::get('length');
 
-        _returnDataInJsonFormat([Content::getPages($_get_pages,
+        _returnDataInJsonFormat([Content::getPages(
+            $_get_pages,
                                                   (($raw == 'true') ? true : false),
                                                   (($order_by != '') ? $order_by : 'date'),
                                                   (($order_type != 'desc') ? 'DESC' : 'ASC'),
                                                   (($offset != '') ? $offset : null),
-                                                  (($length != '') ? $length : null))]);
+                                                  (($length != '') ? $length : null)
+        )]);
     }
 });

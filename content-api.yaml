@@ -1,5 +1,5 @@
 name: Content API
-version: 1.0.2
+version: 1.0.3
 description: "Content API plugin provides a basic way for Applications to get content data from Flextype in valid json format."
 author:
   name: Sergey Romanenko
