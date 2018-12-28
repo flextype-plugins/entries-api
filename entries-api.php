@@ -2,7 +2,7 @@
 
 /**
  *
- * Flextype Content API Plugin
+ * Flextype Entries API Plugin
  *
  * @author Romanenko Sergey / Awilum <awilum@yandex.ru>
  * @link http://flextype.org
@@ -18,7 +18,7 @@ use Flextype\Component\Http\Http;
 use Flextype\Component\Registry\Registry;
 use Flextype\Component\Arr\Arr;
 
-Event::addListener('onCurrentPageBeforeDisplayed', function () {
+Event::addListener('onCurrentEntryBeforeDisplayed', function () {
     function _returnDataInJsonFormat($data)
     {
         Http::setResponseStatus(200);
@@ -28,33 +28,33 @@ Event::addListener('onCurrentPageBeforeDisplayed', function () {
     }
 
     $_to_json   = Http::get('to-json');
-    $_get_page  = Http::get('get-page');
-    $_get_pages = Http::get('get-pages');
+    $_get_page  = Http::get('get-entry');
+    $_get_pages = Http::get('get-entries');
 
     if (isset($_to_json)) {
         $raw = Http::get('raw');
-        _returnDataInJsonFormat([Content::getPage(Http::getUriString(), (($raw == 'true') ? true : false))]);
+        _returnDataInJsonFormat([Entries::getEntry(Http::getUriString(), (($raw == 'true') ? true : false))]);
     }
 
-    if (isset($_get_page)) {
+    if (isset($_get_entry)) {
         $raw = Http::get('raw');
-        _returnDataInJsonFormat([Content::getPage($_get_page, (($raw == 'true') ? true : false))]);
+        _returnDataInJsonFormat([Entry::getEntry($_get_page, (($raw == 'true') ? true : false))]);
     }
 
-    if (isset($_get_pages)) {
+    if (isset($_get_entries)) {
         $raw        = Http::get('raw');
         $order_by   = Http::get('order-by');
         $order_type = Http::get('order-type');
         $offset     = Http::get('offset');
         $length     = Http::get('length');
 
-        _returnDataInJsonFormat([Content::getPages(
-            $_get_pages,
-                                                  (($raw == 'true') ? true : false),
-                                                  (($order_by != '') ? $order_by : 'date'),
-                                                  (($order_type != 'desc') ? 'DESC' : 'ASC'),
-                                                  (($offset != '') ? $offset : null),
-                                                  (($length != '') ? $length : null)
+        _returnDataInJsonFormat([Entries::getEntries(
+            $_get_entries,
+                          (($order_by != '') ? $order_by : 'date'),
+                          (($order_type != 'desc') ? 'DESC' : 'ASC'),
+                          (($offset != '') ? $offset : null),
+                          (($length != '') ? $length : null),
+                          (($raw == 'true') ? true : false)
         )]);
     }
 });

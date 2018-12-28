@@ -1,0 +1,10 @@
+name: Entries API
+version: 1.0.3
+description: "Entries API plugin provides a basic way for Applications to get entry data from Flextype in valid json format."
+author:
+  name: Sergey Romanenko
+  email: awilum@yandex.ru
+  url: http://flextype.org
+homepage: https://github.com/flextype-plugins/entries-api
+bugs: https://github.com/flextype-plugins/entries-api/issues
+license: MIT
